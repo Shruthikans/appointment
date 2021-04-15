@@ -1,0 +1,212 @@
+<br/>
+<br/>
+<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;<button class="btn btn-md btn-outline-primary" (click)="open(content)">
+    <i class="fa fa-user" ></i>New Appointment</button>
+    <br/>
+
+
+
+
+<div class="main-container">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+               
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                  
+                        <h4 class="card-title ">AppointmentTable</h4>
+                        <p class="card-category"> booked appointments</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        appointment ID
+                                    </th>
+                                    <th>
+                                        Patient Id
+                                    </th>
+                                    <th>
+                                        Doctor Id
+                                    </th>
+                                    <th>
+                                        Test Id
+                                    </th>
+    
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        timeSlot
+                                    </th>
+                                    <th>choose</th>
+                                </thead>
+                                <tbody>
+                                        
+                                    <tr *ngFor="let a of appointments">
+                                      <td>{{a.appointmentId}}</td>
+                                      <td>{{a.patientId}}</td>
+                                      <td>{{a.doctorId}}</td>
+                                      <td>{{a.testId}}</td>
+                                      <td>{{a.appointmentDate}}</td>
+                                      <td>{{a.timeSlot}}</td>
+                                      <td>
+                                      <button class="btn btn-sm btn-warning" (click)="openEdit(contentEdit,fnSelect(a.appointmentId))"><i class="fa fa-edit">Edit</i></button>&nbsp;&nbsp;
+                                     </td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Appointment</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="appointmentForm" novalidate>
+        <div class="form-group">
+          <label for="patientId">appointment Id</label>
+          <div class="input-group">
+            <input id="name" class="form-control" type="text"  formControlName="appointmentId" id="appointmentId" disabled>
+           
+          </div>
+
+        </div>
+        <div class="form-group">
+            <label for="patientId">Patient Id</label>
+            <div [ngClass]="(form.patientId.invalid && form.patientId.touched)?'has-error':'form-group'"></div>
+
+            <div class="input-group">
+              <input id="name" class="form-control" type="text" formControlName="patientId" id="patientId"/>
+            </div>
+            <div *ngIf="form.patientId.touched && form.patientId.invalid" class="alert alert-danger">
+              <p *ngIf="form.patientId.touched && form.patientId.errors.required">
+                  PatientId cannot be Blank
+              </p> 
+            </div>  
+            </div>
+          
+          <div class="form-group">
+            <label for="doctorId">DoctorId</label>
+            <div [ngClass]="(form.docotrId.invalid && form.docotrId.touched)?'has-error':'form-group'">
+            <div class="input-group">
+              <input id="name" class="form-control" type="text" formControlName="doctorId" id="doctorId"/>
+            </div>
+            <div *ngIf="form.doctorId.touched && form.doctorId.invalid" class="alert alert-danger">
+              <p *ngIf="form.doctorId.touched && form.doctorId.errors.required">
+                  doctorId cannot be Blank
+              </p> 
+            </div> 
+              </div>
+           
+              <!---<div *ngIf="form.doctorId.touched && form.doctorId.errors.required">
+               DoctorId cannot be Blank--->
+            
+
+          <div class="form-group">
+            <label for="testId">Test Id</label>
+            <div [ngClass]="(form.testId.invalid && form.testId.touched)?'has-error':'form-group'"></div>
+            <div class="input-group">
+              <input id="name" class="form-control" type="text" formControlName="testId" id="testId"/>
+            </div>
+            <div *ngIf="form.testId.touched && form.testId.invalid" class="alert alert-danger">
+              <p *ngIf="form.testId.touched && form.testId.errors.required">
+                  TestId cannot be Blank
+              </p> 
+            </div>
+            </div> 
+                  
+        
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="appointmentDate">AppointmentDate</label>
+            <div [ngClass]="(form.appointmentDate.invalid && form.appointmentDate.touched)?'has-error':'form-group'"></div>
+            <div class="input-group">
+              <input id="name" class="form-control" type="date" formControlName="appointmentDate" id="appointmentDate"/>
+            </div>
+            <div *ngIf="form.appointmentDate.touched && form.appointmentDate.invalid" class="alert alert-danger">
+              <p *ngIf="form.appointmentDate.touched && form.appointmentDate.errors.required">
+                  appointmentDate cannot be Blank
+              </p> 
+            </div>
+            </div>
+          
+          
+        
+          <div class="form-group">
+            <label for="timeSlot">timeSlot</label>
+            <div class="input-group">
+              <input id="name" class="form-control" type="text" formControlName="timeSlot" id="timeSlot" />
+            </div>
+            <div *ngIf="form.timeSlot.touched && form.timeSlot.invalid" class="alert alert-danger">
+              <p *ngIf="form.timeSlot.touched && form.timeSlot.required">
+                  timeSlot cannot be Blank
+              </p> 
+            </div>
+            </div>
+          </div>
+         
+          <div class="border text-center">
+            <button data-dismiss="modal" class="btn btn-info" (click)="appointmentAdd()">Submit</button>
+            </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+       
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Cancel</button>
+    </div>
+  </ng-template>
+
+
+
+   
+<hr>
+                            
+
+                        
+                        
+                    
+
+    
+    
+    
+    
+    <!-- <label for="docotrId">Doctor</label>
+            <select formControlName="doctorId" class="form-control">
+                <option disabled>Select Doctor</option>
+                <option>Choose Website</option>
+                <option *ngFor="let web of doctorIdList">{{web}}</option>
+            </select>
+     -->
+    
+    <!-- Doctor:
+    <input type="text" name="" id="" formControlName="doctorId" class="form-control"><br> -->
+
+
+    <!-- <select [(ngModel)]="selected">
+            <option *ngFor="let doctor of doctorId1" [(ngValue)]="doctor.doctorId1">{{doctor.doctorName}}</option>
+        </select> -->
+
+    <!-- <input type="submit" value="Submit" (click)="appointmentAdd()" class="btn btn-info"> &nbsp;
+    &nbsp;
+    <input type="submit" value="update" (click)="appointmentModify()" class="btn btn-info">
+    &nbsp;
+    &nbsp;
+    <input type="submit" value="delete" (click)="appointmentDelete()" class="btn btn-info">
+</form> -->
+<!-- {{appointmentForm.value|json}} -->
