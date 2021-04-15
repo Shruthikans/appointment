@@ -1,0 +1,59 @@
+<div class="form-group">
+            <label for="patientId">Patient Id</label>
+            <div class="input-group">
+              <input id="name" class="form-control" type="text" formControlName="patientId" id="patientId" [ngClass]="{'is-invalid':
+              form.get('patientId').touched && form.get('patientId').invalid}"/>
+              <div class="invalid-feedback">
+                <div>PatientID is required</div>
+              </div>
+              </div>
+          
+          <div class="form-group">
+            <label for="doctorId">DoctorId</label>
+    <div class="input-group">
+              <input id="name" class="form-control" type="text" formControlName="doctorId" id="doctorId" [ngClass]="{'is-invalid':
+              form.get('doctorId').touched && form.get('doctorId').invalid}"/>
+              <div class="invalid-feedback">
+                <div>DoctorID is required</div>
+              </div>
+              </div>
+           
+              <!---<div *ngIf="form.doctorId.touched && form.doctorId.errors.required">
+               DoctorId cannot be Blank--->
+            
+
+          <div class="form-group">
+            <label for="testId">Test Id</label>
+            <div class="input-group">
+              <input id="name" class="form-control" type="text" formControlName="testId" id="testId"  [ngClass]="{'is-invalid':
+              form.get('testId').touched && form.get('testId').invalid}"/>
+              <div class="invalid-feedback">
+                <div>TestId is required</div>
+              </div>
+              </div>
+                  
+        
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="appointmentDate">AppointmentDate</label>
+            
+            <div class="input-group">
+              <input id="name" class="form-control" type="date" formControlName="appointmentDate" id="appointmentDate" [ngClass]="{'is-invalid':
+              form.get('appointmentDate').touched && form.get('appointmentDate').invalid}" />
+              <div class="invalid-feedback">
+                <div>AppointmentDate is required</div>
+              </div>
+              </div>
+          
+          
+        
+          <div class="form-group">
+            <label for="timeSlot">timeSlot</label>
+            <div class="input-group">
+              <input id="name" class="form-control" type="text" formControlName="timeSlot" id="timeSlot"  [ngClass]="{'is-invalid':
+              form.get('timeSlot').touched && form.get('timeSlot').invalid}"/>
+              <div class="invalid-feedback">
+                <div>Timeslot is required</div>
+              </div>
+              </div>
